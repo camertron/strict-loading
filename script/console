@@ -1,0 +1,9 @@
+#! /bin/bash
+
+docker run --rm -it \
+  -e BUNDLE_PATH=/usr/src/app/vendor/bundle \
+  -e BUNDLE_ARTIFACTORY__IKAREM__IO="$BUNDLE_ARTIFACTORY__IKAREM__IO" \
+  -v $(pwd):/usr/src/app \
+  -w /usr/src/app \
+  --entrypoint /bin/bash \
+  camertron/strict_loading:latest

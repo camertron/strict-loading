@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module StrictLoading
   module AbstractReflection
     def strict_loading_violation_message(owner)

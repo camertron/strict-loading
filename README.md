@@ -1,4 +1,4 @@
-# active_record-strict_loading-backport
+# strict-loading
 
 Backport of Rails 6.1's [strict loading](https://guides.rubyonrails.org/active_record_querying.html#strict-loading) feature for Rails 4 and 5.
 
@@ -7,9 +7,7 @@ Backport of Rails 6.1's [strict loading](https://guides.rubyonrails.org/active_r
 Add this line to your Gemfile:
 
 ```ruby
-source 'https://artifactory.ikarem.io/artifactory/api/gems/meraki-gems' do
-  gem 'active_record-strict_loading-backport'
-end
+gem "strict-loading"
 ```
 
 Then execute:

@@ -1,7 +1,16 @@
-source 'https://artifactory.ikarem.io/artifactory/api/gems/rubygems-proxy-railslts' do
-  gem 'rails', '~> 4.2.11'
+source 'https://rubygems.org'
+
+gemspec
+
+group :development, :test do
+  gem 'rake'
 end
 
-source 'https://artifactory.ikarem.io/artifactory/api/gems/rubygems-proxy-rubygems'
+group :development do
+  gem 'appraisal'
+  gem 'appraisal-run', '~> 1.0'
+end
 
-gem 'ruby3-backward-compatibility'
+group :test do
+  gem 'rspec-rails'
+end

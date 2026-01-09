@@ -1,6 +1,6 @@
 # strict-loading
 
-Backport of Rails 6.1's [strict loading](https://guides.rubyonrails.org/active_record_querying.html#strict-loading) feature for Rails 4 and 5.
+Backport of Rails 6.1's [strict loading](https://guides.rubyonrails.org/active_record_querying.html#strict-loading) feature for earlier versions of Rails.
 
 ## Usage
 

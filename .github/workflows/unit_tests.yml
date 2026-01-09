@@ -1,0 +1,31 @@
+name: Unit Tests
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - ruby-version: '2.2'
+            rails-version: '4.2'
+          - ruby-version: '2.4'
+            rails-version: '5.0'
+          - ruby-version: '2.5'
+            rails-version: '5.1'
+          - ruby-version: '2.5'
+            rails-version: '5.2'
+          - ruby-version: '2.7'
+            rails-version: '6.0'
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Ruby ${{ matrix.ruby-version }}
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby-version }}
+          bundler-cache: true
+        env:
+          BUNDLE_GEMFILE: gemfiles/rails_${{ matrix.rails-version }}.gemfile
+      - name: Run Tests
+        run: bundle exec rake spec
+        env:
+          BUNDLE_GEMFILE: gemfiles/rails_${{ matrix.rails-version }}.gemfile

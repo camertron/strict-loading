@@ -4,7 +4,7 @@ module StrictLoading
   module Association
     private
 
-    def find_target(...)
+    def find_target(*args, **kwargs, &block)
       if violates_strict_loading?
         ::ActiveRecord::Base.strict_loading_violation!(owner: owner.class, reflection: reflection)
       end

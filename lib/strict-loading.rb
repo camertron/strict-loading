@@ -8,6 +8,8 @@ module StrictLoading
   autoload :Relation,           "strict-loading/relation"
 end
 
+require "active_record"
+
 module ActiveRecord
   class StrictLoadingViolationError < ::ActiveRecord::ActiveRecordError; end
 

@@ -6,6 +6,7 @@ module StrictLoading
       base.include(InstanceMethods)
       base.extend(ClassMethods)
 
+      base.delegate :strict_loading, to: :all
       base.mattr_accessor(:action_on_strict_loading_violation, instance_writer: false)
       base.action_on_strict_loading_violation = :raise
     end
@@ -18,9 +19,15 @@ module StrictLoading
       def strict_loading?
         @strict_loading
       end
+
+      def strict_loading #(value = true)
+        spawn.strict_loading! #(value)
+      end
     end
 
     module ClassMethods
+      delegate :strict_loading, to: :all
+
       def strict_loading_violation!(owner:, reflection:)
         case ActiveRecord::Base.action_on_strict_loading_violation
         when :raise

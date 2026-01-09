@@ -17,8 +17,18 @@ module StrictLoading
 
     def strict_loading_value=(value)
       raise ImmutableRelation if @loaded
-      check_cached_relation
+      __check_relation
       @values[:strict_loading] = value
+    end
+
+    if ActiveRecord::VERSION::STRING >= "5.0"
+      def __check_relation
+        assert_mutability!
+      end
+    else
+      def __check_relation
+        check_cached_relation
+      end
     end
   end
 end

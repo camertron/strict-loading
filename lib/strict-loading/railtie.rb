@@ -1,14 +1,13 @@
 # frozen_string_literal: true
 
-require "rails"
-
 module StrictLoading
   class Railtie < Rails::Railtie
     initializer "strict_loading.initialize" do
       ActiveSupport.on_load(:active_record) do
         ::ActiveRecord::Relation.prepend(::StrictLoading::Relation)
-        ::ActiveRecord::QueryMethods.include(::StrictLoading::QueryMethods)
-        ::ActiveRecord::Associations::Association.prepend(::StrictLoading::Association)
+        ::ActiveRecord::Relation.include(::StrictLoading::QueryMethods)
+        # ::ActiveRecord::Associations::Association.prepend(::StrictLoading::Association)
+        ::ActiveRecord::Associations::HasManyAssociation.prepend(::StrictLoading::Association)
         ::ActiveRecord::Associations::SingularAssociation.prepend(::StrictLoading::Association)
         ::ActiveRecord::Associations::HasManyThroughAssociation.prepend(::StrictLoading::Association)
         ::ActiveRecord::Associations::CollectionAssociation.prepend(::StrictLoading::Association)

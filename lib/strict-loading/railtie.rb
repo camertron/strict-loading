@@ -6,7 +6,6 @@ module StrictLoading
       ActiveSupport.on_load(:active_record) do
         ::ActiveRecord::Relation.prepend(::StrictLoading::Relation)
         ::ActiveRecord::Relation.include(::StrictLoading::QueryMethods)
-        # ::ActiveRecord::Associations::Association.prepend(::StrictLoading::Association)
         ::ActiveRecord::Associations::HasManyAssociation.prepend(::StrictLoading::Association)
         ::ActiveRecord::Associations::SingularAssociation.prepend(::StrictLoading::Association)
         ::ActiveRecord::Associations::HasManyThroughAssociation.prepend(::StrictLoading::Association)

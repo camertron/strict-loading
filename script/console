@@ -1,0 +1,10 @@
+#! /bin/bash
+
+docker run \
+  -e "BUNDLE_PATH=vendor/bundle" \
+  -e "BUNDLE_GEMFILE=gemfiles/rails_6.0.gemfile"\
+  --platform linux/amd64 \
+  -v $PWD:/usr/src/app \
+  -w /usr/src/app \
+  --rm -it ruby:2.7\
+  /bin/bash
